@@ -9,13 +9,13 @@ A professional Python wrapper for communicating with QEMU Guest Agent (QGA) via 
 source venv/bin/activate
 
 # Test connectivity
-python src/qga_cli.py ping
+python src/qga ping
 
 # Get system information
-python src/qga_cli.py osinfo
+python src/qga osinfo
 
 # Execute a command
-python src/qga_cli.py exec whoami
+python src/qga exec whoami
 ```
 
 ## 📁 Project Structure
@@ -74,22 +74,22 @@ qga-wrapper/
 
 ```bash
 # Test connectivity
-python src/qga_cli.py ping
+python src/qga ping
 
 # Get OS information
-python src/qga_cli.py osinfo
+python src/qga osinfo
 
 # Execute commands
-python src/qga_cli.py exec ls -la /home
+python src/qga exec ls -la /home
 
 # Get network info
-python src/qga_cli.py network
+python src/qga network
 
 # Read a file from guest
-python src/qga_cli.py file-read /etc/hostname
+python src/qga file-read /etc/hostname
 
 # JSON output
-python src/qga_cli.py -j osinfo
+python src/qga -j osinfo
 ```
 
 ### Python API Usage
@@ -187,7 +187,7 @@ python examples/example_usage.py
 - Verify qemu-guest-agent is running in guest
 
 **Timeout Errors:**
-- Increase timeout: `python src/qga_cli.py -t 60 <command>`
+- Increase timeout: `python src/qga -t 60 <command>`
 - Check guest agent status
 
 **Permission Errors:**
