@@ -35,7 +35,11 @@ qga-wrapper/
 │   └── example_usage.py     # Python API examples
 ├── data/                     # Data files
 │   └── basic_info.json      # QGA capability info
+├── tests/                    # Test results
+│   └── TEST_RESULTS.md      # Comprehensive test report
 ├── venv/                     # Virtual environment
+├── .gitignore               # Git ignore rules
+├── README.md                 # Project overview
 └── requirements.txt          # Python dependencies
 ```
 

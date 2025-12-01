@@ -244,9 +244,9 @@ def main():
     
     # Exec command
     exec_parser = subparsers.add_parser('exec', help='Execute command in guest')
-    exec_parser.add_argument('cmd', nargs='+', help='Command and arguments to execute')
     exec_parser.add_argument('-e', '--show-exitcode', action='store_true',
                             help='Show exit code')
+    exec_parser.add_argument('cmd', nargs=argparse.REMAINDER, help='Command and arguments to execute')
     
     # Set password command
     pwd_parser = subparsers.add_parser('set-password', help='Set user password')
