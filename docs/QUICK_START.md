@@ -3,61 +3,54 @@
 ## Installation & Setup
 
 ```bash
-# Activate virtual environment
-source venv/bin/activate
-
-# Verify installation
-pip list | grep PyYAML
-```
-
-## Basic Usage
-
-### Test Connectivity
-```bash
-python qga_cli.py ping
+python src/qga ping
 ```
 
 ### Get System Information
+
 ```bash
 # OS info
-python qga_cli.py osinfo
+python src/qga osinfo
 
 # Hostname
-python qga_cli.py hostname
+python src/qga hostname
 
 # Network interfaces
-python qga_cli.py network
+python src/qga network
 
 # Filesystem info
-python qga_cli.py fsinfo
+python src/qga fsinfo
 ```
 
 ### Execute Commands
+
 ```bash
 # Simple command
-python qga_cli.py exec whoami
+python src/qga exec whoami
 
 # Command with arguments
-python qga_cli.py exec ls -la /home
+python src/qga exec ls -la /home
 
 # Show exit code
-python qga_cli.py exec -e cat /etc/hostname
+python src/qga exec -e cat /etc/hostname
 ```
 
 ### File Operations
+
 ```bash
 # Read a file
-python qga_cli.py file-read /etc/hostname
+python src/qga file-read /etc/hostname
 
 # Write to a file
-python qga_cli.py file-write /tmp/test.txt "Hello World"
+python src/qga file-write /tmp/test.txt "Hello World"
 ```
 
 ### JSON Output
+
 ```bash
 # Get JSON output for any command
-python qga_cli.py -j osinfo
-python qga_cli.py -j network
+python src/qga -j osinfo
+python src/qga -j network
 ```
 
 ## Python API Usage
@@ -84,16 +77,16 @@ with QGAClient() as client:
 
 | Command | Description | Example |
 |---------|-------------|---------|
-| `ping` | Test connectivity | `python qga_cli.py ping` |
-| `info` | Get agent info | `python qga_cli.py info` |
-| `osinfo` | OS information | `python qga_cli.py osinfo` |
-| `hostname` | Get hostname | `python qga_cli.py hostname` |
-| `users` | Logged-in users | `python qga_cli.py users` |
-| `exec` | Execute command | `python qga_cli.py exec whoami` |
-| `network` | Network info | `python qga_cli.py network` |
-| `fsinfo` | Filesystem info | `python qga_cli.py fsinfo` |
-| `file-read` | Read file | `python qga_cli.py file-read /etc/hosts` |
-| `file-write` | Write file | `python qga_cli.py file-write /tmp/test.txt "data"` |
+| `ping` | Test connectivity | `python src/qga ping` |
+| `info` | Get agent info | `python src/qga info` |
+| `osinfo` | OS information | `python src/qga osinfo` |
+| `hostname` | Get hostname | `python src/qga hostname` |
+| `users` | Logged-in users | `python src/qga users` |
+| `exec` | Execute command | `python src/qga exec whoami` |
+| `network` | Network info | `python src/qga network` |
+| `fsinfo` | Filesystem info | `python src/qga fsinfo` |
+| `file-read` | Read file | `python src/qga file-read /etc/hosts` |
+| `file-write` | Write file | `python src/qga file-write /tmp/test.txt "data"` |
 
 ## Configuration
 
@@ -101,12 +94,12 @@ Default socket: `/tmp/qga.sock`
 
 To use a different socket:
 ```bash
-python qga_cli.py -s /path/to/socket ping
+python src/qga -s /path/to/socket ping
 ```
 
 To change timeout:
 ```bash
-python qga_cli.py -t 60 exec long_running_command
+python src/qga -t 60 exec long_running_command
 ```
 
 ## Troubleshooting

@@ -42,33 +42,33 @@ pip install -r requirements.txt
 
 ```bash
 source venv/bin/activate
-python qga_cli.py ping
+python src/qga ping
 ```
 
 ### Get OS Information
 
 ```bash
-python qga_cli.py osinfo
+python src/qga osinfo
 ```
 
 ### Execute a Command
 
 ```bash
-python qga_cli.py exec ls -la /home
+python src/qga exec ls -la /home
 ```
 
 ### Get Network Interfaces
 
 ```bash
-python qga_cli.py network
+python src/qga network
 ```
 
 ## CLI Usage
 
-The `qga_cli.py` script provides a command-line interface to the wrapper:
+The `qga` script provides a command-line interface to the wrapper:
 
 ```
-usage: qga_cli.py [-h] [-s SOCKET] [-t TIMEOUT] [-j] {command} ...
+usage: qga [-h] [-s SOCKET] [-t TIMEOUT] [-j] {command} ...
 
 Options:
   -s, --socket SOCKET   Path to QGA Unix socket (default: /tmp/qga.sock)
@@ -94,48 +94,48 @@ Commands:
 
 **Execute a command:**
 ```bash
-python qga_cli.py exec whoami
-python qga_cli.py exec ls -la /etc
-python qga_cli.py exec cat /proc/cpuinfo
+python src/qga exec whoami
+python src/qga exec ls -la /etc
+python src/qga exec cat /proc/cpuinfo
 ```
 
 **Change a user password:**
 ```bash
-python qga_cli.py set-password ubuntu newpassword123
+python src/qga set-password ubuntu newpassword123
 ```
 
 **Get system information:**
 ```bash
-python qga_cli.py osinfo
-python qga_cli.py hostname
-python qga_cli.py users
+python src/qga osinfo
+python src/qga hostname
+python src/qga users
 ```
 
 **Manage SSH keys:**
 ```bash
 # List SSH keys
-python qga_cli.py ssh-keys list ubuntu
+python src/qga ssh-keys list ubuntu
 
 # Add an SSH key
-python qga_cli.py ssh-keys add ubuntu --key "ssh-rsa AAAAB3N..."
+python src/qga ssh-keys add ubuntu --key "ssh-rsa AAAAB3N..."
 
 # Remove an SSH key
-python qga_cli.py ssh-keys remove ubuntu --key "ssh-rsa AAAAB3N..."
+python src/qga ssh-keys remove ubuntu --key "ssh-rsa AAAAB3N..."
 ```
 
 **File operations:**
 ```bash
 # Read a file
-python qga_cli.py file-read /etc/hostname
+python src/qga file-read /etc/hostname
 
 # Write to a file
-python qga_cli.py file-write /tmp/test.txt "Hello from host"
+python src/qga file-write /tmp/test.txt "Hello from host"
 ```
 
 **JSON output:**
 ```bash
-python qga_cli.py -j osinfo
-python qga_cli.py -j network
+python src/qga -j osinfo
+python src/qga -j network
 ```
 
 ## Python API Usage
@@ -265,7 +265,7 @@ def my_new_command(self, arg1, arg2):
     return response.get("return", {})
 ```
 
-2. Optionally add a CLI command in `qga_cli.py`:
+2. Optionally add a CLI command in `src/qga`:
 
 ```python
 def cmd_my_command(client, args):
@@ -284,8 +284,8 @@ def cmd_my_command(client, args):
 - Make sure no other process is holding the socket
 
 ### Timeout Errors
-- Increase the timeout: `python qga_cli.py -t 60 <command>`
-- Check if the guest agent is responsive: `python qga_cli.py ping`
+- Increase the timeout: `python src/qga -t 60 <command>`
+- Check if the guest agent is responsive: `python src/qga ping`
 
 ### Permission Errors
 - Ensure you have read/write access to the socket file

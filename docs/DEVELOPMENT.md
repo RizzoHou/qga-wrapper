@@ -30,7 +30,7 @@ The wrapper follows a layered architecture:
 
 ```
 ┌─────────────────────────────────────────┐
-│         CLI Interface (qga_cli.py)       │
+│         CLI Interface (src/qga)          │
 │  User-facing command-line tool          │
 └─────────────────┬───────────────────────┘
                   │
@@ -147,7 +147,7 @@ with QGAClient() as client:
 # Automatically disconnects
 ```
 
-### 3. CLI Interface (qga_cli.py)
+### 3. CLI Interface (src/qga)
 
 **Purpose**: Command-line interface for end users
 
@@ -390,8 +390,8 @@ commands['cpustats'] = cmd_cpustats
 
 **3. Test:**
 ```bash
-python qga_cli.py cpustats
-python qga_cli.py -j cpustats
+python src/qga cpustats
+python src/qga -j cpustats
 ```
 
 ## Testing & Debugging
@@ -411,19 +411,19 @@ Test individual commands:
 
 ```bash
 # Connectivity
-python qga_cli.py ping
+python src/qga ping
 
 # Information gathering
-python qga_cli.py osinfo
-python qga_cli.py hostname
-python qga_cli.py network
+python src/qga osinfo
+python src/qga hostname
+python src/qga network
 
 # Command execution
-python qga_cli.py exec whoami
-python qga_cli.py exec uname -a
+python src/qga exec whoami
+python src/qga exec uname -a
 
 # JSON output
-python qga_cli.py -j osinfo
+python src/qga -j osinfo
 ```
 
 ### Debugging Tips
